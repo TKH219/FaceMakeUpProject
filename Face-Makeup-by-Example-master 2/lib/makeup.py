@@ -1,10 +1,8 @@
 import cv2
 import numpy as np
-import warp
 import imutils
-import face_parts
-import lip
-import overlay_blur
+from lib import face_parts, lip, warp, overlay_blur
+
 
 def decompose(img):
     base = cv2.bilateralFilter(img, 9, 75,75)
@@ -118,17 +116,17 @@ def apply_makeup(subject, warped_target):
     cv2.imshow('old', res)
     cv2.waitKey(0)
 
-    res = overlay_blur.overlay(subject, res, face_mask[:,:,0])
+    res = overlay_blur.overlay(subject, res, face_mask[:, :, 0])
     
     cv2.imshow('res', res)
-    cv2.imwrite('res.jpg', res)
+    cv2.imwrite('../res.jpg', res)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     # subject = cv2.imread('IMG_0739.jpeg', 1)
-    subject = cv2.imread('bluelip2.jpg', 1)
-    target = cv2.imread('target.jpg', 1)
+    subject = cv2.imread('../bluelip2.jpg', 1)
+    target = cv2.imread('../target.jpg', 1)
     subject = imutils.resize(subject, width=500)
     target = imutils.resize(target, width=500)
     sub, warped_tar = warp_target(subject, target)

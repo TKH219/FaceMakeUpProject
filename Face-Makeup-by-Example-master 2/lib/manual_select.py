@@ -48,8 +48,8 @@ def edit_points(img, shape):
     return shape
 
 if __name__ == '__main__':
-    subject = cv2.imread('subject.jpg', 1)
-    target = cv2.imread('target.jpg', 1)
+    subject = cv2.imread('../subject.jpg', 1)
+    target = cv2.imread('../target.jpg', 1)
     subject = imutils.resize(subject, width=500)
     target = imutils.resize(target, width=500)
     gray_sub = cv2.cvtColor(subject, cv2.COLOR_BGR2GRAY)

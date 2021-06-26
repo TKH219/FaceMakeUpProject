@@ -1,5 +1,5 @@
 import cv2
-import facial_landmark
+from lib import facial_landmark
 import imutils
 import numpy as np
 
@@ -62,7 +62,7 @@ def warp(src, dst):
     return warped_image
 
 if __name__ == '__main__':
-    src = cv2.imread('example_01.jpg', 1)
-    dst = cv2.imread('example_02.jpg', 1)
+    src = cv2.imread('../example_01.jpg', 1)
+    dst = cv2.imread('../example_02.jpg', 1)
     src = imutils.resize(src, width=500)
     dst = imutils.resize(dst, width=500)

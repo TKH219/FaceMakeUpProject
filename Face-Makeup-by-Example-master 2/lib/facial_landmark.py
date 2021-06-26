@@ -4,12 +4,11 @@
 # import the necessary packages
 from imutils import face_utils
 import numpy as np
-import argparse
-import skin_detector
+from lib import skin_detector
 import imutils
 import dlib
 import cv2
-import manual_select
+
 
 def draw_delaunay(img, subdiv, delaunay_color) :
     triangleList = subdiv.getTriangleList()
@@ -112,5 +111,5 @@ def triangulate(image):
         return shape, subdiv.getTriangleList()
 
 if __name__ == '__main__':
-    image = cv2.imread('target.jpg')
+    image = cv2.imread('../target.jpg')
     triangulate(image)

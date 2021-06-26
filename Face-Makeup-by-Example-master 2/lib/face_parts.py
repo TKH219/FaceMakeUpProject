@@ -68,6 +68,6 @@ def find_mask(image, betamap):
 		return mask
 
 if __name__ == '__main__':
-	image = cv2.imread('subject.jpg', 1)
+	image = cv2.imread('../subject.jpg', 1)
 	image = imutils.resize(image, width=500)
 	find_mask(image, False)
