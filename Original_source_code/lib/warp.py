@@ -62,7 +62,7 @@ def warp(src, dst):
     return warped_image
 
 if __name__ == '__main__':
-    src = cv2.imread('../example_01.jpg', 1)
-    dst = cv2.imread('../example_02.jpg', 1)
+    src = cv2.imread('../input_image/example_01.jpg', 1)
+    dst = cv2.imread('../input_image/example_02.jpg', 1)
     src = imutils.resize(src, width=500)
     dst = imutils.resize(dst, width=500)
