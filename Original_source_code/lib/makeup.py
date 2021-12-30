@@ -25,8 +25,8 @@ def warp_target(subject, target):
         target = np.vstack((target, zero_layer))
         subject = np.vstack((subject, zero_layer))
 
-    #cv2.imshow('s', subject)
-    #cv2.imshow('t', target)
+    cv2.imshow('original_image', subject)
+    cv2.imshow('target image', target)
     #cv2.waitKey(0)
 
     warped_target = warp.warp(target, subject)
@@ -42,7 +42,7 @@ def apply_makeup(subject, warped_target):
     face_mask = np.where(warped_target==[0,0,0], zeros, ones*255)
     cv2.imshow('mask', face_mask)
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
     sub_lab = cv2.cvtColor(subject, cv2.COLOR_BGR2LAB)
     tar_lab = cv2.cvtColor(warped_target, cv2.COLOR_BGR2LAB)
@@ -115,15 +115,19 @@ def apply_makeup(subject, warped_target):
 
     res = overlay_blur.overlay(subject, res, face_mask[:, :, 0])
     
-    cv2.imshow('res', res)
+    cv2.imshow('result', res)
     cv2.imwrite('../res.jpg', res)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    # subject = cv2.imread('IMG_0739.jpeg', 1)
-    subject = cv2.imread('../input_image/happy_pola.webp', 1)
-    target = cv2.imread('../target_image/test_2.jpeg', 1)
+    # myself
+    # subject = cv2.imread('../input_image/IMG_1833.jpeg', 1)
+    subject = cv2.imread('../input_image/test_image_2.jpg', 1)
+    # target = cv2.imread('../target_image/man_with_make_up.jpg', 1)
+    target = cv2.imread('../target_image/black_man.jpeg', 1)
+    # subject = cv2.imread('../input_image/test_image_2.jpg', 1)
+    # target = cv2.imread('../target_image/target_11.jpg', 1)
     subject = imutils.resize(subject, width=500)
     target = imutils.resize(target, width=500)
     sub, warped_tar = warp_target(subject, target)

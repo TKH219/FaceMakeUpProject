@@ -425,8 +425,8 @@ def apply_makeup(subject, warped_target):
 
 
 def makeup_main(url_subject, url_target):
-    subject = cv2.imread(url_subject, 1)
-    target = cv2.imread(url_target, 1)
+    subject = cv2.imread(url_subject, 0)
+    target = cv2.imread(url_target, 0)
     subject = imutils.resize(subject, width=500)
     target = imutils.resize(target, width=500)
     sub, warped_tar = warp_target(subject, target)

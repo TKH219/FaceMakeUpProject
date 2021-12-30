@@ -93,7 +93,7 @@ class Window(QMainWindow, Ui_MainWindow):
 
     # Mo hop thoai chon file local
     def open_dialog_box_orig(self):
-        filename = QFileDialog.getOpenFileName(self, str("Open File"), "C:/Users/ASUS/OneDrive - Trường ĐH CNTT - University of Information Technology/Máy tính/ComputerVision/Final_Project/final_project_of_Computer_Vision/Original_Image", str("Images (*.png *.xpm *.jpg)"))
+        filename = QFileDialog.getOpenFileName(self, str("Open File"), "/Users/hatk/Desktop/FaceMakeUpProject/Original_source_code/input_image", str("Images (*.png *.xpm *.jpg)"))
         path = filename[0]
         if len(self.arr_orig) != 0:
             self.arr_orig.pop(0)
@@ -101,7 +101,7 @@ class Window(QMainWindow, Ui_MainWindow):
         return path
 
     def open_dialog_box_targ(self):
-        filename = QFileDialog.getOpenFileName(self, str("Open File"), "C:/Users/ASUS/OneDrive - Trường ĐH CNTT - University of Information Technology/Máy tính/ComputerVision/Final_Project/final_project_of_Computer_Vision/Target_Image", str("Images (*.png *.xpm *.jpg)"))
+        filename = QFileDialog.getOpenFileName(self, str("Open File"), "/Users/hatk/Desktop/FaceMakeUpProject/Original_source_code/target_image", str("Images (*.png *.xpm *.jpg)"))
         path = filename[0]
         if len(self.arr_targ) != 0:
             self.arr_targ.pop(0)
