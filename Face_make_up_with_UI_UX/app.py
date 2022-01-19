@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (
 )
 
 import PyQt5
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QPlainTextEdit
 from PyQt5.QtGui import QPixmap
 import os
@@ -33,7 +33,7 @@ class Window(QMainWindow, Ui_MainWindow):
         sys.exit()
 
     def save_file(self):
-        fileName = QFileDialog.getSaveFileName(self, str("Save File"), "C:/Users/ASUS/OneDrive - Trường ĐH CNTT - University of Information Technology/Máy tính/ComputerVision/Final_Project/final_project_of_Computer_Vision/Final_Image/untitled.jpg", str("Images (*.png *.xpm *.jpg)"))
+        fileName = QFileDialog.getSaveFileName(self, str("Save File"), "/Users/hatk/Desktop/FaceMakeUpProject/result/untitled.jpg", str("Images (*.png *.xpm *.jpg)"))
         fileName = fileName[0]
         if fileName != None:
             fileName = list(fileName.split('/'))
@@ -83,17 +83,10 @@ class Window(QMainWindow, Ui_MainWindow):
         bytes_per_line = ch * w
         convert_to_Qt_format = PyQt5.QtGui.QImage(rgb_image.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
         p = convert_to_Qt_format.scaledToHeight(570)
-        #p = convert_to_Qt_format
         return QPixmap.fromImage(p)
 
-
-    # def pushButton_3_handler(self):
-    #     print('Button pressed')
-    #     self.open_dialog_box()
-
-    # Mo hop thoai chon file local
     def open_dialog_box_orig(self):
-        filename = QFileDialog.getOpenFileName(self, str("Open File"), "/Users/hatk/Desktop/FaceMakeUpProject/Original_source_code/input_image", str("Images (*.png *.xpm *.jpg)"))
+        filename = QFileDialog.getOpenFileName(self, str("Open File"), "/Users/hatk/Desktop/FaceMakeUpProject/input_image/", str("Images (*.png *.xpm *.jpg *.jpeg)"))
         path = filename[0]
         if len(self.arr_orig) != 0:
             self.arr_orig.pop(0)
@@ -101,7 +94,7 @@ class Window(QMainWindow, Ui_MainWindow):
         return path
 
     def open_dialog_box_targ(self):
-        filename = QFileDialog.getOpenFileName(self, str("Open File"), "/Users/hatk/Desktop/FaceMakeUpProject/Original_source_code/target_image", str("Images (*.png *.xpm *.jpg)"))
+        filename = QFileDialog.getOpenFileName(self, str("Open File"), "/Users/hatk/Desktop/FaceMakeUpProject/target_image/", str("Images (*.png *.xpm *.jpg *.jpeg)"))
         path = filename[0]
         if len(self.arr_targ) != 0:
             self.arr_targ.pop(0)
@@ -132,3 +125,12 @@ if __name__ == "__main__":
     win = Window()
     win.show()
     sys.exit(app.exec())
+
+
+    # myself
+    # subject = cv2.imread('../input_image/IMG_1833.jpeg', 1)
+    # subject = cv2.imread('../input_image/test_image_2.jpg', 1)
+    # target = cv2.imread('../target_image/man_with_make_up.jpg', 1)
+    # target = cv2.imread('../target_image/black_man.jpeg', 1)
+    # subject = cv2.imread('../input_image/test_image_2.jpg', 1)
+    # target = cv2.imread('../target_image/target_11.jpg', 1)

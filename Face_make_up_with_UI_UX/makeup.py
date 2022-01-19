@@ -1,3 +1,5 @@
+import os
+
 import cv2
 import numpy as np
 import imutils
@@ -365,20 +367,14 @@ def apply_makeup(subject, warped_target):
     rb = np.where(True, sb*(1-gamma)+tb*gamma, zeros[:,:,0])
     ra = ra.astype(type)
     rb = rb.astype(type)
-    #print(ra.shape)
     ra = cv2.bitwise_and(ra,ra,mask = face_mask[:,:,0])
     rb = cv2.bitwise_and(rb,rb,mask = face_mask[:,:,0])
 
-
-
-    #skin-detail transfer
     gammaI = 0
     gammaE = 1
     skin_detail_r = np.where(True, skin_detail_s*gammaI + skin_detail_t*gammaE, zeros[:,:,0])
     skin_detail_r = skin_detail_r.astype(type)
 
-
-    #Work on the base layer
     fp_mask = find_mask(subject, True)
     src_gauss = cv2.pyrDown(face_struct_s)
     src_lapla = face_struct_s - cv2.pyrUp(src_gauss)
@@ -403,47 +399,15 @@ def apply_makeup(subject, warped_target):
     #apply lip makeup
     M, lip_map = lip.lip_makeup(subject, warped_target)
     res = np.where(lip_map==[255,255,255], M, res)
-
-    # cv2.imshow('old', res)
-    # cv2.waitKey(0)
-
     res = overlay(subject, res, face_mask[:,:,0])
-    
-    # cv2.imshow('res', res)
-    # cv2.imwrite('res.jpg', res)
-    # cv2.waitKey(0)
     return res
 
-
-# def crop_img(img):
-#     w, h = img.shape[:2]
-#     for i in range(0, h - 1)[::-1]:
-#         if img[i][0][0] > 10:
-#             img = img[0:i, :]
-#             break
-#     return img
-
-
 def makeup_main(url_subject, url_target):
-    subject = cv2.imread(url_subject, 0)
-    target = cv2.imread(url_target, 0)
+    folder = os.path.join(os.path.dirname('/Users/hatk/Desktop/FaceMakeUpProject/'))
+    subject = cv2.imread(folder + '/' + url_subject)
+    target = cv2.imread(folder + '/' + url_target)
     subject = imutils.resize(subject, width=500)
     target = imutils.resize(target, width=500)
     sub, warped_tar = warp_target(subject, target)
     res = apply_makeup(sub, warped_tar)
-    #res = crop_img(res)
     return res
-
-
-
-
-# url_sub = 'Original_Image/luudiepphi.jpg'
-# url_tag = 'Target_Image/target_2.jpg'
-# img_sub = cv2.imread(url_sub)
-# cv2.imshow('img_sub', img_sub)
-# img_tag = cv2.imread(url_tag)
-# cv2.imshow('img_tag', img_tag)
-# img = makeup_main(url_sub, url_tag)
-# img = crop_img(img)
-# cv2.imshow('img', img)
-# cv2.waitKey(0)
