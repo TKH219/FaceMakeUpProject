@@ -13,5 +13,5 @@
 # THÀNH VIÊN NHÓM 
 | STT |   MSSV   |   Vai Trò   |      Họ và Tên      |          Email         |
 |:---:|:--------:|:-----------:|:-------------------:|:----------------------:|
-| 1   | 16521503 | Thành viên  | Trần Khánh Hà    | 16521503@gm.uit.edu.vn |
-
+| 1   | 16521503 | Thành viên  | Trần Khánh Hà       | 16521503@gm.uit.edu.vn |
+| 2   | 18521503 | Thành viên  | Trần Trương Trọng   | 18521543@gm.uit.edu.vn |
