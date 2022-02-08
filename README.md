@@ -8,14 +8,15 @@
 - Tên môn học: Máy học 
 - Mã môn học: CS114.M11
 - Năm học: 2020-2021
-- Giảng viên: Phạm Nguyễn Trường An
-              Đình Lê Duy 
+
 # THÀNH VIÊN NHÓM 
 | STT |   MSSV   |   Vai Trò   |      Họ và Tên      |          Email         |
 |:---:|:--------:|:-----------:|:-------------------:|:----------------------:|
 | 1   | 16521503 | Thành viên  | Trần Khánh Hà       | 16521503@gm.uit.edu.vn |
+
 # DATASET
-- File shape_predictor_68_face_landmarks.dat được lưu trong đường dẫn FaceMakeUpProject/Face_make_up_with_UI_UX
+- File shape_predictor_68_face_landmarks.dat được lưu trong đường dẫn FaceMakeUpProject/Face_make_up_with_UI_UX.
+
 # HƯỚNG DẪN CHẠY ỨNG DỤNG DEMO
 - Source code chính nằm ở thư mục FaceMakeUpProject.
 - Phần input image và target image sẽ nằm ở 2 folders chung là input_image và target_image.
